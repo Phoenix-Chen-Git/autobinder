@@ -35,7 +35,7 @@ def get_mutable_residues(pdb_path, target_chain, binder_chain, hotspots, distanc
     cmd.load(pdb_path, "structure")
     
     # Format hotspots for selection (e.g., [25, 26] -> "25+26")
-    hotspots_str = "+.join(map(str, hotspots))"
+    hotspots_str = "+".join(map(str, hotspots))
     
     # 1. Select the target hotspot residues
     target_sel_str = f"chain {target_chain} and resi {hotspots_str}"
