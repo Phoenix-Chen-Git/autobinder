@@ -1,0 +1,26 @@
+# -----------------------------
+# Biological Definitions
+# -----------------------------
+target_chain: "B"       # Chain ID of the receptor
+binder_chain: "A"       # Chain ID of the binder to be evolved
+hotspots:               # List[int]: Residue indices (1-based) on Target
+  - 158
+  - 162
+
+# -----------------------------
+# Geometric & Structural Logic
+# -----------------------------
+# Function 1 Sensitivity
+distance_threshold: 4.5 # Float (Angstroms).
+                        # Logic: Min(dist(BinderAtom, HotspotAtom))
+
+# Topology Filter
+tm_score_threshold: 0.95 # Float [0.0 - 1.0].
+                         # < 0.95 implies structural drift/unfolding.
+
+# -----------------------------
+# Execution Control
+# -----------------------------
+max_iterations: 10      # Stop condition
+keep_checkpoints: true  # If false, delete intermediate PDBs to save space
+beam_width: 10          # Number of candidates to keep for the next generation (Top K)
